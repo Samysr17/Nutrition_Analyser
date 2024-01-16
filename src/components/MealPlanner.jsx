@@ -3,6 +3,8 @@ import axios from "axios";
 import Recipe from "./Recipe";
 import { User } from "@auth0/auth0-react";
 import { UserAuth } from "../Context/AuthContext";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const MealPlanner = () => {
   // const [Food, setFood] = useState([]);
@@ -25,6 +27,16 @@ const MealPlanner = () => {
 
   const FoodName = useRef(null);
   const FoodQuantity = useRef(null);
+  toast.success('Succesfully Added', {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored",
+    });
 
   //Food
   const FetchData = async () => {
@@ -93,7 +105,20 @@ const MealPlanner = () => {
   }, []);
 
   return (
+    
     <div className="w-full min-h-screen flex flex-col box-border items-center justify-center border-4 border-blue-900">
+            <ToastContainer
+position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="colored"
+/>
       <div className="m-6 text-5xl font-bold">Meal Planner:</div>
       <div className="flex flex-row p-4">
         <label className="mb-2 text-lg">Cuisine:</label>
